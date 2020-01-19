@@ -10,6 +10,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(bodyParser.json());
+var pg = require('pg');
 
 app.use(function(req,res,next){
     res.locals.userValue = null;
@@ -28,34 +29,23 @@ app.post('/team/add',function(req,res){
      
 });
 
+var x;
 app.get("/", async function(req,res){
-	var test;
-  const { Pool, Client } = require('pg')
-  const connectionString = 'postgresql://postgres:password@localhost/leagueproj'
-  const pool = new Pool({
-    connectionString: connectionString,
-	
-  })
-  
-  pool.query('select * from playersdb', (err, res) => {
-  //  console.log(err, res)
-    pool.end()
-  })
-  const client = new Client({
-    connectionString: connectionString,
-  })
-  client.connect()
-  client.query('select * from playersdb', (err, res) => {
-  //  console.log(err, res)
-    client.end()
-  })
-  
-    res.render('index', {
-        test: test
+	var name;
+
+	var conString = "postgres://postgres:password@localhost:5432/leagueproj";
+
+	var client = new pg.Client(conString);
+	client.connect();
+	client.query('SELECT * from playersdb where id=20', (err, res) => {
+	  console.log(err ? err.stack : res.rows[0].name) // Hello World!
+	  
+	client.end()
+	});
+	res.render('index',{
+        userValue : name
     });
-	
-	
-  
+
 });
 
 
