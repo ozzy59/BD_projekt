@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<!-- views/pages/index.ejs -->
   <head>
     <meta charset="utf-8">
     <title>cos tam</title>
   </head>
   <body>
  to dasd
-  </body>
+
+<body>
+    <form name="form1" method="POST" action="/team/add">
+    <table>
+        <tr>
+        <td>First name</td>
+        <td><input type="text" name="fname" ></td>
+        </tr>
+        <tr>
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>   
+    <% if(userValue!=null){ %>    
+        <div> Data Entered as <%= userValue.first %> </div>
+    <%}%> 
+</body>
+
+</body>
 </html>
