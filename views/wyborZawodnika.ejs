@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<!-- views/pages/index.ejs -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Liga Zawodnikow</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+              <h1 class="display-4 text-center" > Witaj!</h1>
+            <p class="lead text-center">Dzieki tej stronie bedziesz mógł stworzyć własną drużyne piłkarską!</p>
+          </div>
+        </div>
+      </header>
+
+<main>
+<div class="display-2 text-center">
+  Wybierz parametry zawodnika
+</div>
+<br>
+<div class="container-fluid">
+  <div class="sub-div">
+    <form class="" action="/" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Nazwisko" name="playerName">
+
+        <!-- <input type="number" name="quantity" value="" placeholder="Ilość" required> -->
+        <input type="text" name="Drużyna" placeholder="Drużyna">
+        <input type="number" name="Cena" placeholder="Cena" min="0">
+        <!-- <div class="input-group mb-3"> -->
+          <select class="custom-select" name="Pozycja" required>
+            <option value="Napastnik" selected disabled value="Pozycja">Pozycja</option>
+            <option value="Napastnik">Napastnik</option>
+            <option value="Pomocnik">Pomocnik</option>
+            <option value="Obrońca">Obrońca</option>
+            <option value="Bramkarz">Bramkarz</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-outline-dark add-btn" name="addButton">Dodaj</button>
+    </form>
+  </div>
+</div>
+</main>
+</html>

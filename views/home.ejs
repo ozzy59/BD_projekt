@@ -28,30 +28,24 @@
           </div>
         </div>
       </header>
-      <main>
-      <div class="display-2 text-center">
-        Wybierz parametry zawodnika
-      </div>
-      <div class="container-fluid">
-
-    <div class="sub-div">
-      <form class="" action="/" method="post">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Imię i Nazwisko" name="playerName">
-
-          <!-- <input type="number" name="quantity" value="" placeholder="Ilość" required> -->
-          <input type="text" name="Drużyna" placeholder="Drużyna">
-          <input type="number" name="Cena" placeholder="Cena" min="0">
-          <div class="input-group mb-3">
-            <select class="custom-select" name="Pozycja" required>
-              <option value="Napastnik" selected disabled value="Pozycja">Pozycja</option>
-              <option value="Napastnik">Napastnik</option>
-              <option value="Pomocnik">Pomocnik</option>
-              <option value="Obrońca">Obrońca</option>
-              <option value="Bramkarz">Bramkarz</option>
-            </select>
+  <main>
+    <div class="display-3 text-center">
+      Wybierz nazwę swojej druzyny
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="sub-div">
+        <form class="" action="/" method="post">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Nazwa druzyny" name="playerName">
           </div>
-      </main>
+          <a href="/wyborZawodnika" class="btn btn-success">Zatwierdź</a>
+        </form>
+      </div>
+    </div>
+<br>
+<br>
+  </main>
 <!-- <body>
     <form name="form1" method="POST" action="/team/add">
     <table>
