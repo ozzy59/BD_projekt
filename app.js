@@ -55,7 +55,7 @@ app.post("/addTeam", async function(req,res){    //tworze druzyne podana przez u
 		console.log(err.stack)
 	  } else {
 		console.log(res)
-		// { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
+		
 	  }
 
 	  client.end();
@@ -72,20 +72,19 @@ app.post("/addPlayer", async function(req,res){    //tworze druzyne podana przez
 	var name=req.body.plName;
 	var client = new pg.Client(conString);
 	 client.connect();
-	const text = 'insert into user1 select * from playersdb where name=$1';  
-	const values = [req.body.plName]
+	
+	const text= "insert into bartoszbryk (select * from playersdb where name='"+name+"');"  
+	//zamiast bartoszbryk nazwa tabelki
 // callback
-	client.query(text,values, (err, res) => {
+	client.query(text, (err, res) => {
 	  if (err) {
 		console.log(err.stack)
 	  } else {
-		console.log(res.rows[0])
-		// { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
+		console.log(res)
+
 	  }
 	  client.end();
 	})
-	
-	
 
 	res.redirect('/wyborZawodnika');
 });

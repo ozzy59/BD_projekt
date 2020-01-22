@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- views/pages/index.ejs -->
+
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,8 +17,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <!-- Custom styles for this template -->
+    
+	<!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/styles.css">
+		div {
+	  border: 1px solid black;
+	}
+	#div2-1,
+	#div2-2 {
+	  height: 50%;
+	  border: 1px solid red !important;
+	}
+	#div1,#div2{
+	  height:50px;
+	  
+	  }
+	#div2.col-xs-6
+	{
+	  padding:0px !important;
+	}
 
     <header>
         <div class="jumbotron jumbotron-fluid">
@@ -26,14 +45,16 @@
           </div>
         </div>
       </header>
+	  
 
 <main>
-<div class="display-2 text-center" >
+<div class="display-4 margin-left" >
   Wybierz parametry zawodnika
 </div>
 <br>
 <div class="container-fluid">
-  <div class="sub-div">
+  <div class="row">
+	<div class="col-xs-6" id="div1">
     <form class="" action="/" method="post">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Nazwisko" name="playerName">
@@ -50,11 +71,30 @@
             <option value="Bramkarz">Bramkarz</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-outline-dark add-btn" name="addButton">Dodaj</button>
+     
     </form>
   </div>
+  </div>
 </div>
-<div class="display-4 text-left">
+
+    <br>
+    <div class="container-fluid">
+      <div class="sub-div">
+        <form class="" action="/addPlayer" method="post">
+			  <div class="input-group">
+			  <div class="input-group-prepend">
+				<span class="input-group-text">Nazwa druzyny i nazwisko piłkarza</span>
+			  </div>
+			  <input type="text" class="form-control" placeholder="Nazwa druzyny" name="teamName">
+			  <input type="text" class="form-control" placeholder="Nazwisko zawodnika" name="plName">
+			</div>
+          <button ontype="submit" class="btn btn-primary btn-block">Dodaj</a>
+        </form>
+      </div>
+    </div>
+
+    </br>
+	<div class="display-4 text-left">
   <div class="row px-md-5">
     Lista zawodników twojej drużyny
     <%= team%>
@@ -62,19 +102,6 @@
       <div class="display-3 text-center">
 		Dodaj zawodnika do twojej druzyny <%= team%>
     </div>
-    <br>
-    <div class="container-fluid">
-      <div class="sub-div">
-        <form class="" action="/addPlayer" method="post">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Imie zawodnika" name="plName" required>
-          </div>
-          <button type="submit" class="btn btn-success add-btn">Zatwierdź</a>
-        </form>
-      </div>
-    </div>
-
-    </br>
 
 </div>
 
