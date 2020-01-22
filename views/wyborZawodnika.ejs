@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <!-- views/pages/index.ejs -->
   <head>
     <meta charset="utf-8">
@@ -28,7 +28,7 @@
       </header>
 
 <main>
-<div class="display-2 text-center">
+<div class="display-2 text-center" >
   Wybierz parametry zawodnika
 </div>
 <br>
@@ -54,5 +54,13 @@
     </form>
   </div>
 </div>
+<div class="display-4 text-left">
+  <div class="row px-md-5">
+    Lista zawodników twojej drużyny
+    <%= team%>
+  </div>
+
+</div>
+
 </main>
 </html>

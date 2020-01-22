@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(bodyParser.json());
 
+var teamName = "coksaock";
 
 app.use(function(req,res,next){
     res.locals.userValue = null;
@@ -19,18 +20,18 @@ app.use(function(req,res,next){
 })
 
 app.post('/',function(req,res){
-    var team = {
-        // first : req.body.fname,
-        playerName:req.body.playerName,
-        Drużyna:req.body.Drużyna,
-        Cena:req.body.Cena,
-        Pozycja:req.body.Pozycja
-    }
-	name2=team.first;
-    console.log(team);
-    res.redirect("/");
+    // var team =  {teamName:req.body.teamName}
+    // console.log(team);
+    teamName = req.body.teamName;
+    res.redirect("/wyborZawodnika");
     //res.json(student);
-     console.log(name2);
+
+});
+
+app.post('/wybórZawodnika',function(req,res){
+    teamName = req.body.teamName;
+    res.redirect("/wyborZawodnika");
+
 });
 
 app.get("/", async function(req,res){
@@ -42,12 +43,12 @@ app.get("/", async function(req,res){
 	var client = new pg.Client(conString);
 	client.connect();
 
-	client.query('SELECT * from playersdb where name=20').then(res => {
+	client.query('SELECT * from playersdb').then(res => {
 	 // console.log(err ? err.stack : res.rows[0].name) // Hello World!
 
-   const result = R.head(R.values(R.head(res.rows)));
+   const result = (res.rows);
 
-       console.log(result);
+       // console.log(result);
 	}).finally(() => client.end());
 
 	res.render('home',{
@@ -56,7 +57,7 @@ app.get("/", async function(req,res){
 
 });
 app.get("/wyborZawodnika", async function(req,res){
-  res.render('wyborZawodnika');
+  res.render('wyborZawodnika', {team: teamName});
 });
 
 app.listen(3000, function(){
