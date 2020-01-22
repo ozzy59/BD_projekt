@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const request = require('request');
 var pg = require('pg');
 //const engine = require(__dirname + "/engine.js");    //module
-// var connect = 'postgresql://postgress:pass@localhost/league';
-var connect = 'postgresql://OZ:123456@localhost/league';
+var conString = "postgres://postgres:password@localhost:5432/leagueproj";
+//var connect = 'postgresql://OZ:123456@localhost/league';
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -34,11 +34,41 @@ app.post('/wybórZawodnika',function(req,res){
 
 });
 
+
+app.post('/stworzDruzyne',function(req,res){
+	res.render("create")
+    res.redirect("/create");
+
+});
+app.post("/addTeam", async function(req,res){    //tworze druzyne podana przez usera
+	var conString = "postgres://postgres:password@localhost:5432/leagueproj";
+	console.log(req.body.teamName);
+	var name=req.body.teamName;
+	var client = new pg.Client(conString);
+	 client.connect();
+	const text = 'create table '+name+' (id integer UNIQUE, name varchar(20) primary key, team varchar(3),position varchar(3), cost decimal, total_points integer, FOREIGN KEY (id, total_points) references playersdb(id, total_points) on update cascade)'
+	const values = [req.body.teamName]
+// callback
+	client.query(text, (err, res) => {
+	  if (err) {
+		console.log(err.stack)
+	  } else {
+		console.log(res.rows[0])
+		// { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
+	  }
+	  client.end();
+	})
+	
+	
+
+	res.redirect('/wyborZawodnika');
+});
+
 app.get("/", async function(req,res){
 	var name;
 
-	// var conString = "postgres://postgres:pass@localhost:5432/league";
-  var conString = "postgres://OZ:123456@localhost:5432/league";
+	var conString = "postgres://postgres:password@localhost:5432/leagueproj";
+ // var conString = "postgres://OZ:123456@localhost:5432/league";
 
 	var client = new pg.Client(conString);
 	client.connect();
