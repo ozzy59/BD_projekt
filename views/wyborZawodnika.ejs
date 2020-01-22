@@ -59,6 +59,22 @@
     Lista zawodników twojej drużyny
     <%= team%>
   </div>
+      <div class="display-3 text-center">
+		Dodaj zawodnika do twojej druzyny <%= team%>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="sub-div">
+        <form class="" action="/addPlayer" method="post">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Imie zawodnika" name="plName" required>
+          </div>
+          <button type="submit" class="btn btn-success add-btn">Zatwierdź</a>
+        </form>
+      </div>
+    </div>
+
+    </br>
 
 </div>
 

@@ -46,10 +46,36 @@ app.post("/addTeam", async function(req,res){    //tworze druzyne podana przez u
 	var name=req.body.teamName;
 	var client = new pg.Client(conString);
 	 client.connect();
-	const text = 'create table '+name+' (id integer UNIQUE, name varchar(20) primary key, team varchar(3),position varchar(3), cost decimal, total_points integer, FOREIGN KEY (id, total_points) references playersdb(id, total_points) on update cascade)'
+	 const text = "create table "+name+" (id integer UNIQUE, name varchar(20) primary key, team varchar(3),position varchar(3), cost decimal, total_points integer, FOREIGN KEY (id, total_points) references playersdb(id, total_points) on update cascade);"+"create function check_budget_"+name+"() returns trigger as '"+ "Begin if NEW.cost +(select sum(cost) from "+name+")>100 then raise notice ''Budget exceeded''; return null; "
++"else return new; end if; end; 'Language 'plpgsql';"+"create trigger budget_trigger before insert on "+name+" for each row execute procedure check_budget();"
 	const values = [req.body.teamName]
 // callback
 	client.query(text, (err, res) => {
+	  if (err) {
+		console.log(err.stack)
+	  } else {
+		console.log(res)
+		// { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
+	  }
+
+	  client.end();
+	
+	})
+
+	
+
+	res.redirect('/wyborZawodnika');
+});
+app.post("/addPlayer", async function(req,res){    //tworze druzyne podana przez usera
+	var conString = "postgres://postgres:password@localhost:5432/leagueproj";
+	console.log(req.body.plName);
+	var name=req.body.plName;
+	var client = new pg.Client(conString);
+	 client.connect();
+	const text = 'insert into user1 select * from playersdb where name=$1';  
+	const values = [req.body.plName]
+// callback
+	client.query(text,values, (err, res) => {
 	  if (err) {
 		console.log(err.stack)
 	  } else {
@@ -63,7 +89,6 @@ app.post("/addTeam", async function(req,res){    //tworze druzyne podana przez u
 
 	res.redirect('/wyborZawodnika');
 });
-
 app.get("/", async function(req,res){
 	var name;
 
