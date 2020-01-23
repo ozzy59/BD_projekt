@@ -89,6 +89,29 @@ app.post("/addPlayer", async function(req,res){    //tworze druzyne podana przez
 
 	res.redirect('/wyborZawodnika');
 });
+app.post("/removePlayer", async function(req,res){    //tworze druzyne podana przez usera
+	var conString = "postgres://postgres:pass@localhost:5432/league";
+	console.log(req.body.plName);
+	var pnamedel=req.body.plNameDel;
+	var tnamedel = req.body.teamNameDel;
+	var client = new pg.Client(conString);
+	 client.connect();
+	
+	const text= "delete from "+tnamedel+" where name='"+pnamedel+"'";
+	//zamia
+// callback
+	client.query(text, (err, res) => {
+	  if (err) {
+		console.log(err.stack)
+	  } else {
+		console.log(res)
+
+	  }
+	  client.end();
+	})
+
+	res.redirect('/wyborZawodnika');
+});
 app.get("/", async function(req,res){
 	var name;
 
@@ -126,7 +149,7 @@ app.post("/list", async function(req,res){    //tworze druzyne podana przez user
 	 var pos=req.body.pos;
 
 	
-	const text= "select * from playersdb where name='"+name+"' or cost>"+cena+" and team='"+team+"' and position='"+pos+"';" ///ni chuja nie wiem jak wypisac tych zawodników
+	const text= "select * from playersdb where name='"+name+"' or cost>"+cena+" and team='"+team+"' and position='"+pos+"';" ///ni chuja nie wiem jak wypisac tych zawodników na stronie
 	//const values=[req.body.Cena, req.body.teamName, req.body.Pozycja];
 	//zamia
 // callback
