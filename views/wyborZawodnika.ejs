@@ -17,7 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    
+
 	<!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/styles.css">
 
@@ -29,7 +29,7 @@
           </div>
         </div>
       </header>
-	  
+
 
 <main>
 <body>
@@ -39,20 +39,13 @@
 	<div class="col-xs-6" id="div1">
     <form class="" action="/list" method="post">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Nazwisko" name="playerName">
-
-        <!-- <input type="number" name="quantity" value="" placeholder="Ilość" required> -->
-        <input type="text" name="team" placeholder="Drużyna">
-        <input type="number" name="cost" placeholder="Cena" min="0">
-        <!-- <div class="input-group mb-3"> -->
           <select class="custom-select" name="pos" required>
             <option value="Napastnik" selected disabled value="Pozycja">Pozycja</option>
-            <option value=FWD>Napastnik</option>
-            <option value=MID>Pomocnik</option>
-            <option value=DEF>Obrońca</option>
-            <option value=GK>Bramkarz</option>
-        </select>
-		
+            <option value="FWD">Napastnik</option>
+            <option value="MID">Pomocnik</option>
+            <option value="DEF">Obrońca</option>
+            <option value="GK">Bramkarz</option>
+          </select>
       </div>
      <button type="submit" class="btn btn-success add-btn">Filter</a>
     </form>
@@ -77,9 +70,8 @@
         <form class="" action="/addPlayer" method="post">
 			  <div class="input-group">
 			  <div class="input-group-prepend">
-				<span class="input-group-text">Nazwa druzyny i nazwisko piłkarza</span>
+				<span class="input-group-text">Nazwisko piłkarza</span>
 			  </div>
-			  <input type="text" class="form-control" placeholder="Nazwa druzyny" name="teamName">
 			  <input type="text" class="form-control" placeholder="Nazwisko zawodnika" name="plName">
 			</div>
           <button ontype="submit" class="btn btn-primary btn-block">Dodaj</a>
@@ -95,9 +87,8 @@
         <form class="" action="/removePlayer" method="post">
         <div class="input-group">
         <div class="input-group-prepend">
-        <span class="input-group-text">Nazwa druzyny i nazwisko piłkarza</span>
+        <span class="input-group-text">Nazwisko piłkarza</span>
         </div>
-        <input type="text" class="form-control" placeholder="Nazwa druzyny" name="teamNameDel">
         <input type="text" class="form-control" placeholder="Nazwisko zawodnika" name="plNameDel">
       </div>
           <button ontype="submit" class="btn btn-primary btn-block">Usun</a>
@@ -106,14 +97,15 @@
     </div>
 
     </br>
-	<div class="display-4 text-left">
-  <div class="row px-md-5">
+    <div class="container-fluid">
+  <div class="display-4 text-center">
     Lista zawodników twojej drużyny
-    <%= team%>
   </div>
-      <div class="display-3 text-center">
-		Dodaj zawodnika do twojej druzyny <%= team%>
-    </div>
+  <form class="" action="/usersList" method="post">
+  <button ontype="submit" class="btn btn-primary btn-block">Wyświetl</a>
+  </form>
+  </div>
+
 
 </div>
 </body>
