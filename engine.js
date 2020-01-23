@@ -32,7 +32,7 @@ exports.removePlayer = function(teamName, playersName){
   var client = new pg.Client(conString);
    client.connect();
 
-  const text= "delete from "+teamName+" where name = '"+playersName+"';" ///ni chuja nie wiem jak wypisac tych zawodników na stronie
+  const text= "delete from "+teamName+" where name = '"+playersName+"';" 
   //const values=[req.body.Cena, req.body.teamName, req.body.Pozycja];
   //zamia
 // callback
