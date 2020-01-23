@@ -69,12 +69,13 @@ app.post("/addTeam", async function(req,res){    //tworze druzyne podana przez u
 app.post("/addPlayer", async function(req,res){    //tworze druzyne podana przez usera
 	var conString = "postgres://postgres:password@localhost:5432/leagueproj";
 	console.log(req.body.plName);
-	var name=req.body.plName;
+	var pname=req.body.plName;
+	var tname = req.body.teamName;
 	var client = new pg.Client(conString);
 	 client.connect();
 	
-	const text= "insert into bartoszbryk (select * from playersdb where name='"+name+"');"  
-	//zamiast bartoszbryk nazwa tabelki
+	const text= "insert into "+tname+" (select * from playersdb where name='"+pname+"');"  
+	//zamia
 // callback
 	client.query(text, (err, res) => {
 	  if (err) {
@@ -109,6 +110,30 @@ app.get("/", async function(req,res){
         userValue : name
     });
 
+});
+app.get("/list", async function(req,res){    //tworze druzyne podana przez usera
+	var conString = "postgres://postgres:password@localhost:5432/leagueproj";
+	console.log(req.body.plName);
+	var pname=req.body.plName;
+	var tname = req.body.teamName;
+	var client = new pg.Client(conString);
+	 client.connect();
+	
+	const text= "select * from bartoszbryk"  ///ni chuja nie wiem jak wypisac tych zawodników
+	//zamia
+// callback
+	client.query(text, (err, response) => {
+	  if (err) {
+		console.log(err.stack)
+	  } else {
+		console.log(response.rows)
+	
+	  }
+	 
+	  client.end();
+	})
+
+	res.redirect('/wyborZawodnika');
 });
 app.get("/wyborZawodnika", async function(req,res){
   res.render('wyborZawodnika', {team: teamName});

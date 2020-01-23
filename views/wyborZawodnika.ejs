@@ -20,22 +20,6 @@
     
 	<!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/styles.css">
-		div {
-	  border: 1px solid black;
-	}
-	#div2-1,
-	#div2-2 {
-	  height: 50%;
-	  border: 1px solid red !important;
-	}
-	#div1,#div2{
-	  height:50px;
-	  
-	  }
-	#div2.col-xs-6
-	{
-	  padding:0px !important;
-	}
 
     <header>
         <div class="jumbotron jumbotron-fluid">
@@ -48,14 +32,11 @@
 	  
 
 <main>
-<div class="display-4 margin-left" >
-  Wybierz parametry zawodnika
-</div>
 <br>
 <div class="container-fluid">
   <div class="row">
 	<div class="col-xs-6" id="div1">
-    <form class="" action="/" method="post">
+    <form class="" action="/list" method="get">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Nazwisko" name="playerName">
 
@@ -65,16 +46,27 @@
         <!-- <div class="input-group mb-3"> -->
           <select class="custom-select" name="Pozycja" required>
             <option value="Napastnik" selected disabled value="Pozycja">Pozycja</option>
-            <option value="Napastnik">Napastnik</option>
+            <option value="Napastnik">Napastnikc</option>
             <option value="Pomocnik">Pomocnik</option>
             <option value="Obrońca">Obrońca</option>
             <option value="Bramkarz">Bramkarz</option>
         </select>
+		
       </div>
-     
+     <button type="submit" class="btn btn-success add-btn">Filter</a>
     </form>
   </div>
   </div>
+</div>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+	<div class="ml-auto col-auto alert alert-primary">
+
+    </div>
+</div>
 </div>
 
     <br>
