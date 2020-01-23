@@ -32,24 +32,25 @@
 	  
 
 <main>
+<body>
 <br>
 <div class="container-fluid">
   <div class="row">
 	<div class="col-xs-6" id="div1">
-    <form class="" action="/list" method="get">
+    <form class="" action="/list" method="post">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Nazwisko" name="playerName">
 
         <!-- <input type="number" name="quantity" value="" placeholder="Ilość" required> -->
-        <input type="text" name="Drużyna" placeholder="Drużyna">
-        <input type="number" name="Cena" placeholder="Cena" min="0">
+        <input type="text" name="team" placeholder="Drużyna">
+        <input type="number" name="cost" placeholder="Cena" min="0">
         <!-- <div class="input-group mb-3"> -->
-          <select class="custom-select" name="Pozycja" required>
+          <select class="custom-select" name="pos" required>
             <option value="Napastnik" selected disabled value="Pozycja">Pozycja</option>
-            <option value="Napastnik">Napastnikc</option>
-            <option value="Pomocnik">Pomocnik</option>
-            <option value="Obrońca">Obrońca</option>
-            <option value="Bramkarz">Bramkarz</option>
+            <option value=FWD>Napastnik</option>
+            <option value=MID>Pomocnik</option>
+            <option value=DEF>Obrońca</option>
+            <option value=GK>Bramkarz</option>
         </select>
 		
       </div>
@@ -58,9 +59,10 @@
   </div>
   </div>
 </div>
+</body>
 
 
-
+<body>
 <div class="container-fluid">
   <div class="row">
 	<div class="ml-auto col-auto alert alert-primary">
@@ -96,6 +98,6 @@
     </div>
 
 </div>
-
+</body>
 </main>
 </html>
